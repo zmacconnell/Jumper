@@ -1,10 +1,21 @@
 ﻿using System;
 
 
-internal class Program
+namespace JumperGame
 {
-    private static void Main(string[] args)
+    /// <summary>
+    /// The program's entry point.
+    /// </summary>
+    class Program
     {
-        Console.WriteLine("Hello, World!");
+        /// <summary>
+        /// Starts the program using the given arguments.
+        /// </summary>
+        /// <param name="args">The given arguments.</param>
+        static void Main(string[] args)
+        {
+            Director director = new Director();
+            director.StartGame();
+        }
     }
 }
