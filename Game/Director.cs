@@ -10,7 +10,6 @@ namespace JumperGame
     {
         private Jumper _jumper = new Jumper();
         private bool _isDead = false;
-        private Word _word = new Word();
         private TerminalService _terminalService = new TerminalService();
 
         /// <summary>

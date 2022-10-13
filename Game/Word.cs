@@ -13,6 +13,16 @@ namespace JumperGame
             string newWord = words[index];
             return newWord;
         }
-        
+        public void PrintWord(string guessWord, List<char> correctGuesses);
+        {
+            foreach (char i in guessWord)
+            {
+                bool result = guessWord.Contains(i);
+                if (result)
+                {
+                    Console.WriteLine()
+                }
+            }
+        }
     }
 }
