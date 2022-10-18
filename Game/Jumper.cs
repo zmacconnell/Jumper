@@ -5,7 +5,17 @@ namespace JumperGame
 {
     internal class Jumper
     {
-        bool IsDead = false;
+        private bool IsDead = false;
         private Word _word = new Word();
+        /// <summary>
+        /// Construct a new instance of Jumper
+        /// </summary>
+        public Jumper()
+        {
+        }
+
+        
     }
+
+    
 }
