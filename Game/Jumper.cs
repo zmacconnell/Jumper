@@ -14,7 +14,10 @@ namespace JumperGame
         {
         }
 
+        List<string> parachuteMan = new List<string>();
+        parachuteman.Add(@"  ___   ")
         
+        string wholeMan = String.Join("\n", parachuteMan);
     }
 
     
