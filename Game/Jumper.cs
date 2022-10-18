@@ -5,6 +5,7 @@ namespace JumperGame
 {
     internal class Jumper
     {
+        new TerminalService terminal = new TerminalService();
         private bool IsDead = false;
         private Word _word = new Word();
         /// <summary>

@@ -5,13 +5,27 @@ namespace JumperGame
 {
     internal class Word
     {
-        private List<string> words = new List<string>();
+        new TerminalService terminal = new TerminalService();
+        private List<string> wordList = new List<string>();
+        
         private string newWord = "";
+        public Word()
+        {
+            wordList.Add("septuagenarian");
+            wordList.Add("implacable");
+            wordList.Add("computer");
+            wordList.Add("orangutang");
+            wordList.Add("slime");
+            wordList.Add("catholic");
+            wordList.Add("crankshaft");
+            wordList.Add("carburator");
+            wordList.Add("exhaust gas recirculation");
+        }
         public void PickWord()
         {
             Random rnd = new Random();
-            int index = rnd.Next(words.Count);
-            string newWord = words[index];
+            int index = rnd.Next(wordList.Count);
+            string newWord = wordList[index];
         }
 
         /// <summary>
@@ -19,11 +33,11 @@ namespace JumperGame
         /// </summary>
         public void PrintWord(string guessWord, List<char> correctGuesses)
         {
-            foreach (char i in guessWord);
+            List<string> printedWord = new List<string>();
+            foreach (char i in guessWord)
             {
-                List<string> printedWord = new List<string>();
                 string letter = i.ToString();
-                if (newWord.Contains(letter);
+                if (newWord.Contains(letter))
                 {
                     printedWord.Append(letter);
                 }
@@ -31,8 +45,9 @@ namespace JumperGame
                 {
                     printedWord.Append("_");
                 }
-                string outputWord = String.Join(" ", printedWord);
             }
+            string outputWord = String.Join(" ", printedWord);
+            terminal.ReadText(outputWord);
         }
     }
 }
