@@ -51,7 +51,14 @@ namespace JumperGame
                 }
             }
             string outputWord = String.Join(" ", printedWord);
-            terminal.ReadText(outputWord);
+            terminal.WriteText(outputWord);
+            foreach (string i in guesses)
+            {
+                if (!newWord.Contains(i))
+                {
+                    _incorrectGuesses += 1;
+                }
+            }
             return _incorrectGuesses;
         }
     }
