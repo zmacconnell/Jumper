@@ -12,6 +12,7 @@ namespace JumperGame
         private bool isDead = false;
         private Word _word = new Word();
         private List<string> guesses = new List<string>();
+        private int incorrectGuesses = 0;
         private TerminalService _terminal = new TerminalService();
 
         /// <summary>
@@ -49,7 +50,8 @@ namespace JumperGame
         /// </summary>
         private void DoUpdates()
         {
-            
+            int incorrectGuesses = _word._incorrectGuesses;
+            _jumper.JumperState(incorrectGuesses);
         }
 
         /// <summary>

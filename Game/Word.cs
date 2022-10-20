@@ -35,7 +35,7 @@ namespace JumperGame
         /// <summary>
         /// Prints the guess with _ representing letters not yet guessed
         /// </summary>
-        public int PrintWord(List<string> guesses)
+        public void PrintWord(List<string> guesses)
         {
             List<string> printedWord = new List<string>();
             foreach (char i in newWord)
@@ -52,6 +52,7 @@ namespace JumperGame
             }
             string outputWord = String.Join(" ", printedWord);
             terminal.WriteText(outputWord);
+            _incorrectGuesses = 0;
             foreach (string i in guesses)
             {
                 if (!newWord.Contains(i))
@@ -59,7 +60,6 @@ namespace JumperGame
                     _incorrectGuesses += 1;
                 }
             }
-            return _incorrectGuesses;
         }
     }
 }
