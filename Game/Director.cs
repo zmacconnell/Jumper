@@ -9,8 +9,10 @@ namespace JumperGame
     public class Director
     {
         private Jumper _jumper = new Jumper();
-        private bool _isDead = false;
-        private TerminalService _terminalService = new TerminalService();
+        private bool isDead = false;
+        private Word _word = new Word();
+        private List<string> guesses = new List<string>();
+        private TerminalService _terminal = new TerminalService();
 
         /// <summary>
         /// Constructs a new instance of Director.
@@ -24,7 +26,8 @@ namespace JumperGame
         /// </summary>
         public void StartGame()
         {
-            while (!_isDead)
+            _word.PickWord();
+            while (!isDead)
             {
                 GetInputs();
                 DoUpdates();
@@ -37,7 +40,8 @@ namespace JumperGame
         /// </summary>
         private void GetInputs()
         {
-            
+            string playerGuess = _terminal.ReadText("Guess a number [a-z]: ");
+            guesses.Add(playerGuess.ToLower());
         }
 
         /// <summary>
@@ -53,11 +57,13 @@ namespace JumperGame
         /// </summary>
         private void DoOutputs()
         {
+            _word.PrintWord(guesses);
+            _jumper.PrintJumper();
             
-            // if (_jumper.IsDead())
-            // {
-            //     _isDead = true;
-            // }
+            if (_jumper._isDead)
+            {
+                isDead = true;
+            }
             
         }
     }

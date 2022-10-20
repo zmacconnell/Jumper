@@ -7,6 +7,7 @@ namespace JumperGame
     {
         new TerminalService terminal = new TerminalService();
         private List<string> wordList = new List<string>();
+        public int _incorrectGuesses = 0;
         
         private string newWord = "";
         public Word()
@@ -21,23 +22,26 @@ namespace JumperGame
             wordList.Add("carburator");
             wordList.Add("exhaust gas recirculation");
         }
+        /// <summary>
+        /// Randomly picks a word from a private list of words
+        /// </summary>
         public void PickWord()
         {
             Random rnd = new Random();
             int index = rnd.Next(wordList.Count);
-            string newWord = wordList[index];
+            newWord = wordList[index];
         }
 
         /// <summary>
         /// Prints the guess with _ representing letters not yet guessed
         /// </summary>
-        public void PrintWord(string guessWord, List<char> correctGuesses)
+        public int PrintWord(List<string> guesses)
         {
             List<string> printedWord = new List<string>();
-            foreach (char i in guessWord)
+            foreach (char i in newWord)
             {
                 string letter = i.ToString();
-                if (newWord.Contains(letter))
+                if (guesses.Contains(letter))
                 {
                     printedWord.Append(letter);
                 }
@@ -48,6 +52,7 @@ namespace JumperGame
             }
             string outputWord = String.Join(" ", printedWord);
             terminal.ReadText(outputWord);
+            return _incorrectGuesses;
         }
     }
 }
