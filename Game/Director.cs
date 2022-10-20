@@ -36,7 +36,7 @@ namespace JumperGame
         }
 
         /// <summary>
-        /// Moves the seeker to a new location.
+        /// gathers inputs from the user
         /// </summary>
         private void GetInputs()
         {
@@ -45,7 +45,7 @@ namespace JumperGame
         }
 
         /// <summary>
-        /// Keeps watch on where the seeker is moving.
+        /// Updates game files
         /// </summary>
         private void DoUpdates()
         {
@@ -53,7 +53,7 @@ namespace JumperGame
         }
 
         /// <summary>
-        /// Provides a hint for the seeker to use.
+        /// Provides an output
         /// </summary>
         private void DoOutputs()
         {
