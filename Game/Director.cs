@@ -13,6 +13,7 @@ namespace JumperGame
         private Word _word = new Word();
         private List<string> guesses = new List<string>();
         private int incorrectGuesses = 0;
+        private bool finishedWord = false;
         private TerminalService _terminal = new TerminalService();
 
         /// <summary>
@@ -50,8 +51,10 @@ namespace JumperGame
         /// </summary>
         private void DoUpdates()
         {
-            int incorrectGuesses = _word._incorrectGuesses;
+            _word.PrintWord(guesses);
+            incorrectGuesses = _word._incorrectGuesses;
             _jumper.JumperState(incorrectGuesses);
+            finishedWord = _word._finishedWord;
         }
 
         /// <summary>
@@ -59,13 +62,14 @@ namespace JumperGame
         /// </summary>
         private void DoOutputs()
         {
-            _word.PrintWord(guesses);
-            _jumper.PrintJumper();
-            
             if (_jumper._isDead)
             {
                 isDead = true;
             }
+            // else if (finishedWord)
+            // {
+            //     isDead = true;
+            // }
             
         }
     }

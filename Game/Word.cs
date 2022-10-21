@@ -8,6 +8,7 @@ namespace JumperGame
         new TerminalService terminal = new TerminalService();
         private List<string> wordList = new List<string>();
         public int _incorrectGuesses = 0;
+        public bool _finishedWord = false;
         
         private string newWord = "";
         public Word()
@@ -38,28 +39,39 @@ namespace JumperGame
         public void PrintWord(List<string> guesses)
         {
             List<string> printedWord = new List<string>();
+            int completionTest = 0;
             foreach (char i in newWord)
             {
                 string letter = i.ToString();
                 if (guesses.Contains(letter))
                 {
-                    printedWord.Append(letter);
+                    printedWord.Add(letter);
                 }
                 else
                 {
-                    printedWord.Append("_");
+                    printedWord.Add("_");
+                    completionTest += 1;
                 }
+            }
+            if (completionTest >= 0)
+            {
+                _finishedWord = true;
             }
             string outputWord = String.Join(" ", printedWord);
             terminal.WriteText(outputWord);
             _incorrectGuesses = 0;
+            List<string> wrongLetters = new List<string>();
             foreach (string i in guesses)
             {
                 if (!newWord.Contains(i))
                 {
                     _incorrectGuesses += 1;
+                    wrongLetters.Add(i);
                 }
             }
+            string wrongLettersString = String.Join(" ", wrongLetters);
+            terminal.WriteText("Incorrect Answers: ");
+            terminal.WriteText(wrongLettersString);
         }
     }
 }

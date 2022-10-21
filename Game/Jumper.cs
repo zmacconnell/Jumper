@@ -10,7 +10,6 @@ namespace JumperGame
         private Word _word = new Word();
         private List<string> jumperBody = new List<string>();
         private string wholeMan = "";
-        private int _incorrectGuesses = 0;
         public List<string> jumperChute = new List<string>();
 
         /// <summary>
@@ -18,11 +17,6 @@ namespace JumperGame
         /// </summary>
         public Jumper()
         {
-            // parachuteMan.Add(@"  ___  ");
-            // parachuteMan.Add(@" /___\ ");
-            // parachuteMan.Add(@" \   / ");
-            // parachuteMan.Add(@"  \ /  ");
-            // parachuteMan.Add(@"   O   ");
             jumperBody.Add(@"  /|\  ");
             jumperBody.Add(@"  / \  ");
             jumperBody.Add(@"^^^^^^^");
@@ -32,40 +26,35 @@ namespace JumperGame
         /// <summary>
         /// Prints out the Jumper
         /// </summary>
-        public void PrintJumper()
-        {
-            _terminal.WriteText(wholeMan);
-        }
-        
         public void JumperState(int incorrectGuesses)
         {
+            _terminal.WriteText(wholeMan);
             string jumperBodyLine = String.Join("\n", jumperBody);
-            _incorrectGuesses = incorrectGuesses;
-            if (_incorrectGuesses >= 5)
+            if (incorrectGuesses >= 5)
             {
                 _terminal.WriteText(@"   X   ");
                 _terminal.WriteText(jumperBodyLine);
                 _isDead = true;
             }
-            else if (_incorrectGuesses == 4)
+            else if (incorrectGuesses == 4)
             {
                 _terminal.WriteText(@"   O   ");
                 _terminal.WriteText(jumperBodyLine);
             }
-            else if (_incorrectGuesses == 3)
+            else if (incorrectGuesses == 3)
             {
                 _terminal.WriteText(@"  \ /  ");
                 _terminal.WriteText(@"   O   ");
                 _terminal.WriteText(jumperBodyLine);
             }
-            else if (_incorrectGuesses == 2)
+            else if (incorrectGuesses == 2)
             {
                 _terminal.WriteText(@" \   / ");
                 _terminal.WriteText(@"  \ /  ");
                 _terminal.WriteText(@"   O   ");
                 _terminal.WriteText(jumperBodyLine);
             }
-            else if (_incorrectGuesses == 1)
+            else if (incorrectGuesses == 1)
             {
                 _terminal.WriteText(@" /___\ ");
                 _terminal.WriteText(@" \   / ");
