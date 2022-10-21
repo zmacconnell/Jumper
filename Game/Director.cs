@@ -9,7 +9,7 @@ namespace JumperGame
     public class Director
     {
         private Jumper _jumper = new Jumper();
-        private bool isDead = false;
+        private bool isDone = false;
         private Word _word = new Word();
         private List<string> guesses = new List<string>();
         private int incorrectGuesses = 0;
@@ -29,7 +29,7 @@ namespace JumperGame
         public void StartGame()
         {
             _word.PickWord();
-            while (!isDead)
+            while (!isDone)
             {
                 GetInputs();
                 DoUpdates();
@@ -64,13 +64,16 @@ namespace JumperGame
         {
             if (_jumper._isDead)
             {
-                isDead = true;
+                isDone = true;
+                _terminal.ReadText("YOU DIED!");
+                string newWord = _word.GetNewWord();
+                _terminal.WriteText($"The word was {newWord}");
             }
-            // else if (finishedWord)
-            // {
-            //     isDead = true;
-            // }
-            
+            else if (finishedWord)
+            {
+                isDone = true;
+                _terminal.ReadText("YOU WIN!");
+            }
         }
     }
 }

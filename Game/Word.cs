@@ -33,6 +33,11 @@ namespace JumperGame
             newWord = wordList[index];
         }
 
+        public string GetNewWord()
+        {
+            return newWord;
+        }
+
         /// <summary>
         /// Prints the guess with _ representing letters not yet guessed
         /// </summary>
@@ -53,7 +58,7 @@ namespace JumperGame
                     completionTest += 1;
                 }
             }
-            if (completionTest >= 0)
+            if (completionTest <= 0)
             {
                 _finishedWord = true;
             }
