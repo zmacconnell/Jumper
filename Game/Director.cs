@@ -42,8 +42,20 @@ namespace JumperGame
         /// </summary>
         private void GetInputs()
         {
-            string playerGuess = _terminal.ReadText("Guess a letter [a-z]: ");
-            guesses.Add(playerGuess.ToLower());
+            bool canGuess = true;
+            while (canGuess)
+            {
+                string playerGuess = _terminal.ReadText("Guess a letter [a-z]: ");
+                if (guesses.Contains(playerGuess))
+                {
+                    _terminal.WriteText($"{playerGuess} has already been guessed. Please try again.");
+                }
+                else
+                {
+                    guesses.Add(playerGuess.ToLower());
+                    canGuess = false;
+                }
+            }
         }
 
         /// <summary>
