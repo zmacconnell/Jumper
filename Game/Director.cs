@@ -42,7 +42,7 @@ namespace JumperGame
         /// </summary>
         private void GetInputs()
         {
-            string playerGuess = _terminal.ReadText("Guess a number [a-z]: ");
+            string playerGuess = _terminal.ReadText("Guess a letter [a-z]: ");
             guesses.Add(playerGuess.ToLower());
         }
 
@@ -65,7 +65,7 @@ namespace JumperGame
             if (_jumper._isDead)
             {
                 isDone = true;
-                _terminal.ReadText("YOU DIED!");
+                _terminal.WriteText("YOU DIED!");
                 string newWord = _word.GetNewWord();
                 _terminal.WriteText($"The word was {newWord}");
             }
