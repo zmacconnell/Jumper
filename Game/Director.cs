@@ -29,15 +29,12 @@ namespace JumperGame
         /// </summary>
         public void StartGame()
         {
-            while (playAgain)
+            _word.PickWord();
+            while (!isDone)
             {
-                _word.PickWord();
-                while (!isDone)
-                {
-                    GetInputs();
-                    DoUpdates();
-                    DoOutputs();
-                }
+                GetInputs();
+                DoUpdates();
+                DoOutputs();
             }
         }
 
@@ -84,13 +81,13 @@ namespace JumperGame
                 _terminal.WriteText("YOU DIED!");
                 string newWord = _word.GetNewWord();
                 _terminal.WriteText($"The word was {newWord}");
-                playAgain = _jumper.PlayAgain();
+                // playAgain = _jumper.PlayAgain();
             }
             else if (finishedWord)
             {
                 isDone = true;
                 _terminal.ReadText("YOU WIN!");
-                playAgain = _jumper.PlayAgain();
+                // playAgain = _jumper.PlayAgain();
             }
         }
     }
