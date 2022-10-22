@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 
 namespace JumperGame
@@ -11,17 +12,28 @@ namespace JumperGame
         public bool _finishedWord = false;
         
         private string newWord = "";
+        public string _path = Directory.GetCurrentDirectory();
+
+        /// <summary>
+        /// Creates a new instnace of Word
+        /// </summary>
         public Word()
         {
-            wordList.Add("septuagenarian");
-            wordList.Add("implacable");
-            wordList.Add("computer");
-            wordList.Add("orangutang");
-            wordList.Add("slime");
-            wordList.Add("catholic");
-            wordList.Add("crankshaft");
-            wordList.Add("carburator");
-            wordList.Add("exhaust gas recirculation");
+            // wordList.Add("septuagenarian");
+            // wordList.Add("implacable");
+            // wordList.Add("computer");
+            // wordList.Add("orangutang");
+            // wordList.Add("slime");
+            // wordList.Add("catholic");
+            // wordList.Add("crankshaft");
+            // wordList.Add("carburator");
+            // wordList.Add("exhaust gas recirculation");
+            string wordTextFile = _path + @"\Game\WordList.txt";
+            List<string> lines = System.IO.File.ReadLines(wordTextFile).ToList();
+            foreach (string line in lines)
+            {
+                wordList.Add(line);
+            }
         }
         /// <summary>
         /// Randomly picks a word from a private list of words
