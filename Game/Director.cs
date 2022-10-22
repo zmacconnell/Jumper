@@ -10,6 +10,7 @@ namespace JumperGame
     {
         private Jumper _jumper = new Jumper();
         private bool isDone = false;
+        private bool playAgain = true;
         private Word _word = new Word();
         private List<string> guesses = new List<string>();
         private int incorrectGuesses = 0;
@@ -28,12 +29,15 @@ namespace JumperGame
         /// </summary>
         public void StartGame()
         {
-            _word.PickWord();
-            while (!isDone)
+            while (playAgain)
             {
-                GetInputs();
-                DoUpdates();
-                DoOutputs();
+                _word.PickWord();
+                while (!isDone)
+                {
+                    GetInputs();
+                    DoUpdates();
+                    DoOutputs();
+                }
             }
         }
 
@@ -80,11 +84,13 @@ namespace JumperGame
                 _terminal.WriteText("YOU DIED!");
                 string newWord = _word.GetNewWord();
                 _terminal.WriteText($"The word was {newWord}");
+                playAgain = _jumper.PlayAgain();
             }
             else if (finishedWord)
             {
                 isDone = true;
                 _terminal.ReadText("YOU WIN!");
+                playAgain = _jumper.PlayAgain();
             }
         }
     }

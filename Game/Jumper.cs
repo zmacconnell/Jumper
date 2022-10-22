@@ -73,5 +73,20 @@ namespace JumperGame
 
             }
         }
+
+        public bool PlayAgain()
+        {
+            bool playAgain = true;
+            string playAgainStatus = _terminal.ReadText("Play again (y/n)? ");
+            if (playAgainStatus.ToLower() == "y")
+            {
+                playAgain = true;
+            }
+            else
+            {
+                playAgain = false;
+            }
+            return playAgain;
+        }
     }
 }
